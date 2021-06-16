@@ -1,38 +1,43 @@
-import { useState, useEffect } from "react";
-import Head from "next/head";
-import Image from "next/image";
+import { useState, useEffect, useMemo } from "react";
 import {
   FacebookIcon,
   FacebookShareButton,
   TwitterShareButton,
   TwitterIcon,
 } from "react-share";
+import dayjs from "dayjs";
+import RelativeTime from "dayjs/plugin/relativeTime";
+import Duration from "dayjs/plugin/duration";
+import DayOfYear from "dayjs/plugin/dayOfYear";
 import styles from "../styles/Home.module.css";
+
+dayjs.extend(RelativeTime);
+dayjs.extend(DayOfYear);
+dayjs.extend(Duration);
+
+function getCountdown() {
+  const announceDate = dayjs("2021-06-16T00:00:00.000Z");
+  const openDate = announceDate.add(dayjs.duration({ days: 120 }));
+  return openDate.diff(dayjs(), "day");
+}
 
 export default function Home() {
   const [dot, setDot] = useState("");
 
+  const countdownDate = useMemo(getCountdown, []);
+
   useEffect(() => {
     setInterval(() => {
-      console.log(dot);
       setDot((prev) => (prev === "..." ? "" : prev + "."));
     }, 1000);
   }, []);
 
   return (
     <main className={styles.content}>
-      <Head>
-        <title>Thailand Grand Opening</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
-      </Head>
-
       <div className={styles.container}>
         <h1>ประยุทธ์เหลือเวลาเตรียมเปิดประเทศอีก</h1>
         <h1 className={styles.countdown}>
-          120 วัน
+          {countdownDate} วัน
           <span>
             <span className={styles.dot}>{dot}</span>
           </span>
@@ -51,11 +56,11 @@ export default function Home() {
         </div>
 
         <div className={styles.social}>
-          <FacebookShareButton url="test">
+          <FacebookShareButton url="https://unlock-thailand.vercel.app">
             <FacebookIcon size={24} />
           </FacebookShareButton>
           <TwitterShareButton
-            url="test"
+            url="https://unlock-thailand.vercel.app"
             title="ประยุทธ์เหลือเตรียมเปิดประเทศอีกกี่วัน?"
             hashtags={["เปิดประเทศ120วัน"]}
           >
