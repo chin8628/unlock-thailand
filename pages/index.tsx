@@ -35,6 +35,7 @@ export default function Home() {
   return (
     <main className={styles.content}>
       <div className={styles.container}>
+        <small>ประยุทธ์ได้กล่าวในแถลงการณ์ว่า “ผมตั้งเป้าเอาไว้ว่า ประเทศไทยจะต้องเปิดประเทศทั้งประเทศ ให้ได้ภายใน 120 วัน” ดังนั้นเว็บนี้จึงเกิดขึ้นมา</small>
         <h1>ประยุทธ์เหลือเวลาเตรียมเปิดประเทศอีก</h1>
         <h1 className={styles.countdown}>
           {countdownDate} วัน

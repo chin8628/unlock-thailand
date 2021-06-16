@@ -25,3 +25,8 @@ h1 {
   padding: 0;
   text-align: center;
 }
+
+small {
+  color: #BFDBFE;
+  text-align: center;
+}
