@@ -1,0 +1,36 @@
+.content {
+  padding: 24px 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
+}
+
+.countdown {
+  font-size: 20vw;
+  padding: 0;
+  margin: 0;
+  display: block;
+  position: relative;
+}
+
+.dot {
+  position: absolute;
+  bottom: 10px;
+}
+
+.videoPanel {
+  display: block;
+  width: 100vw;
+  max-width: 480px;
+}
+
+.social {
+  padding: 16px;
+}
