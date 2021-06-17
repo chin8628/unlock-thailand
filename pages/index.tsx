@@ -22,7 +22,7 @@ dayjs.extend(Timezone);
 dayjs.tz.setDefault("Asia/Bangkok");
 
 function getCountdown() {
-  const announceDate = dayjs("2021-06-17T00:00:00.000Z");
+  const announceDate = dayjs("2021-07-01T00:00:00.000Z");
   const openDate = announceDate.add(dayjs.duration({ days: 120 }));
   return openDate.diff(dayjs(), "day");
 }
