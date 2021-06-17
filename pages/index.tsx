@@ -9,14 +9,20 @@ import dayjs from "dayjs";
 import RelativeTime from "dayjs/plugin/relativeTime";
 import Duration from "dayjs/plugin/duration";
 import DayOfYear from "dayjs/plugin/dayOfYear";
+import Utc from "dayjs/plugin/utc";
+import Timezone from "dayjs/plugin/timezone";
+
 import styles from "../styles/Home.module.css";
 
 dayjs.extend(RelativeTime);
 dayjs.extend(DayOfYear);
 dayjs.extend(Duration);
+dayjs.extend(Utc);
+dayjs.extend(Timezone);
+dayjs.tz.setDefault("Asia/Bangkok");
 
 function getCountdown() {
-  const announceDate = dayjs("2021-06-16T00:00:00.000Z");
+  const announceDate = dayjs("2021-06-17T00:00:00.000Z");
   const openDate = announceDate.add(dayjs.duration({ days: 120 }));
   return openDate.diff(dayjs(), "day");
 }
@@ -35,7 +41,11 @@ export default function Home() {
   return (
     <main className={styles.content}>
       <div className={styles.container}>
-        <small>ประยุทธ์ได้กล่าวในแถลงการณ์ว่า “ผมตั้งเป้าเอาไว้ว่า ประเทศไทยจะต้องเปิดประเทศทั้งประเทศ ให้ได้ภายใน 120 วัน” ดังนั้นเว็บนี้จึงเกิดขึ้นมา</small>
+        <small>
+          ประยุทธ์ได้กล่าวในแถลงการณ์ว่า “ผมตั้งเป้าเอาไว้ว่า
+          ประเทศไทยจะต้องเปิดประเทศทั้งประเทศ ให้ได้ภายใน 120 วัน”
+          ดังนั้นเว็บนี้จึงเกิดขึ้นมา
+        </small>
         <h1>ประยุทธ์เหลือเวลาเตรียมเปิดประเทศอีก</h1>
         <h1 className={styles.countdown}>
           {countdownDate} วัน
